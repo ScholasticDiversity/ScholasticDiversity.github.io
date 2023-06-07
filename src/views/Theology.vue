@@ -63,17 +63,17 @@
 			<p class="text-body">Judah HaLevi</p>
 		</v-timeline-item>
 		<v-timeline-item dot-color="green">
-			<div class="text-h6 mt-n1">c. 1075 CE</div>
+			<div class="text-h6 mt-n1">c. 1037-1126 CE</div>
 			<v-divider class="mb-4"></v-divider>
-			<p class="text-body">Muslim Aristotelians: Avicenna (Ibn Sina), Averroes (Ibn Rushd)</p>
+			<p class="text-body">Muslim or Persian Aristotelians: Avicenna (Ibn Sina), Averroes (Ibn Rushd)</p>
 		</v-timeline-item>
 		<v-timeline-item dot-color="purple">
-			<div class="text-h6 mt-n1">c. 1075 CE</div>
+			<div class="text-h6 mt-n1">c. 1100-1266 CE</div>
 			<v-divider class="mb-4"></v-divider>
 			<p class="text-body">Aristotelian Scholastics: Héloïse d'Argenteuil, Peter Abelard, Peter Lombard, Bonaventure, Thomas Aquinas, John Duns Scotus</p>
 		</v-timeline-item>
 		<v-timeline-item dot-color="blue-darken-1">
-			<div class="text-h6 mt-n1">c. 1075 CE</div>
+			<div class="text-h6 mt-n1">c. 1138-1288 CE</div>
 			<v-divider class="mb-4"></v-divider>
 			<p class="text-body">Jewish Aristotelians: Maimonides, David Kimhi (Radak), Levi ben Gershon (Gersonides or Ralbag)</p>
 		</v-timeline-item>

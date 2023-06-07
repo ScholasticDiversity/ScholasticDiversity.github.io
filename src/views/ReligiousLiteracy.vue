@@ -271,7 +271,7 @@
 			<div>
 				<div class="text-h6 mt-n1">1954 CE</div>
 				<v-divider class="mb-4"></v-divider>
-				<p class="text-body"><em>Witchcraft Today</em> is published by Gerald Brosseau Gardner, who founded Gardnerian Wicca. According to Gardner, his system was influenced by the witches near England's New Forest, which he discovered in 1939 CE.</p>
+				<p class="text-body"><em>Witchcraft Today</em> is published by Gerald Brosseau Gardner, who founded <em>Gardnerian Wicca</em>. According to Gardner, his system was influenced by the witches near England's New Forest, which he discovered in 1939 CE.</p>
 			</div>
 		</v-timeline-item>
 		<v-timeline-item dot-color="white" size="x-small">
@@ -309,7 +309,6 @@
 				<p class="text-body"><em>The Spiral Dance</em> is published by Starhawk, who helped establish the <em>Reclaiming tradition</em> in San Francisco.</p>
 			</div>
 		</v-timeline-item>
-		Bahā'ī Faith
 	</v-timeline>
 </template>
   
