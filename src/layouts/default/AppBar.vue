@@ -3,7 +3,7 @@
     <template v-slot:prepend>
         <v-app-bar-nav-icon @click="expandBar()"></v-app-bar-nav-icon>
         <v-img
-        src="logo.jpg"
+        src="@/assets/logo.jpg"
         width="50px"
         class="ml-2"
         ></v-img>
