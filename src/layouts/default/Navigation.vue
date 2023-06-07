@@ -69,7 +69,7 @@
 				{ title: 'Shinto' },
 				{ title: 'Ancient Near Eastern Paganism' },
 				{ title: 'Zoroastrianism' },
-				{ title: 'Judaism' },
+				{ title: 'Judaism', to: { name: "judaism" } },
 				{ title: 'Samaritans' },
 				{ title: 'Buddhism' },
 				{ title: 'Jainism' },

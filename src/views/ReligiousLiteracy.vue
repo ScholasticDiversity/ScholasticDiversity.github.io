@@ -69,7 +69,7 @@
 			<div>
 				<div class="text-h6 mt-n1">325 CE</div>
 				<v-divider class="mb-4"></v-divider>
-				<p class="text-body">The First Council of Nicaea, called by Emperor Constantine I.</p>
+				<p class="text-body">The First Council of Nicaea, called by Emperor Constantine I with the goal of formulating a standardized Christian Theology.</p>
 			</div>
 		</v-timeline-item>
 		<v-timeline-item dot-color="purple">
@@ -281,7 +281,7 @@
 				<p class="text-body">Alexander Sanders founds <em>Alexandrian Wicca</em> in England. Victor Anderson and Cora Anderson found the <em>Feri tradition</em> in California.</p>
 			</div>
 		</v-timeline-item>
-		<v-timeline-item dot-color="purple" size="small">
+		<v-timeline-item dot-color="purple">
 			<div>
 				<div class="text-h6 mt-n1">1962–1965 CE</div>
 				<v-divider class="mb-4"></v-divider>

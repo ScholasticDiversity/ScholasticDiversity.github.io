@@ -83,9 +83,13 @@
 		{ category: "African, LBGTQ+", name: "Enfleshing Freedom: body, race, and being", author: "M. Shawn Copeland", awards: "", tradition: "Christianity" },
 		{ category: "Disability", name: "Vulnerable Communion: A Theology of Disability and Hospitality", author: "Thomas E. Reynolds", awards: "", tradition: "Christianity" },
 		{ category: "LGBTQ+", name: "A Rainbow Thread: An Anthology of Queer Jewish Texts from the First Century to 1969", author: "Noam Sienna", awards: "2020 Reference Award (Association of Jewish Libraries) and 2020 Anthology Award (Lambda Literary Foundation)", tradition: "Judaism" },
-		{ category: "LGBTQ+", name: "Wrestling with God & Men: Homosexuality in the Jewish Tradition", author: "Rabbi Steven Greenberg", awards: "2005 Koret Jewish Book Award for Philosophy and Thought", tradition: "Judaism" },
+		{ category: "LGBTQ+", name: "Wrestling with God & Men: Homosexuality in the Jewish Tradition (Updated ed.)", author: "Rabbi Steven Greenberg", awards: "2005 Koret Jewish Book Award for Philosophy and Thought", tradition: "Judaism" },
 		{ category: "LGBTQ+", name: "Torah Queeries: Weekly Commentaries on the Hebrew Bible", author: "Gregg Drinkwater, et al.", awards: "", tradition: "Judaism" },
 		{ category: "LGBTQ+", name: "Mishkan Ga'avah: Where Pride Dwells: A Celebration of LGBTQ Jewish Life and Ritual", author: "Rabbi Denise L. Eger", awards: "", tradition: "Judaism" },
+		{ category: "LGBTQ+", name: "Together in Love and Faith", author: "Bishop Steven Croft", awards: "", tradition: "Christianity (Church of England)" },
+		{ category: "LGBTQ+", name: "The Queer Bible Commentary (2nd ed.)", author: "Deryn Guest, et al.", awards: "", tradition: "Christianity" },
+		{ category: "Feminist", name: "The Hidden History of Women's Ordination: Female Clergy in the Medieval West", author: "Gary Macy", awards: "", tradition: "Christianity" },
+		{ category: "Feminist", name: "Studies in Bible and Feminist Criticism", author: "Tikva Frymer-Kensky", awards: "", tradition: "Judaism" },
 	]);
 </script>
   

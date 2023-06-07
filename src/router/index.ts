@@ -25,6 +25,11 @@ const routes = [
         component: () => import('@/views/Theology.vue'),
       },
       {
+        path: 'judaism',
+        name: "judaism",
+        component: () => import('@/views/Judaism.vue'),
+      },
+      {
         path: 'religiousliteracy',
         name: "religiousliteracy",
         component: () => import('@/views/ReligiousLiteracy.vue'),
