@@ -20,7 +20,7 @@ import { ref, readonly, DeepReadonly } from 'vue';
   let cards = ref([
     { title: "Religious Literacy Overview", cols: 4, linkName: "religiousliteracy" },
     { title: "Theology Overview", cols: 4, linkName: "theology" },
-    { title: "Contextual Theology", cols: 4, linkName: "contextualtheologies" },
+    { title: "Contextual Theology", cols: 4, linkName: "contextualtheologies"},
   ])
 
   function goto(name: string) {
