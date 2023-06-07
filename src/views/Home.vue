@@ -5,7 +5,7 @@
       <v-col v-for="card in cards" :cols="card.cols">
         <v-hover v-slot="{ isHovering, props }">
           <v-card @click="goto(card.linkName)" v-bind="props" :elevation="isHovering ? 5 : 2">
-            <v-card-title v-text="card.title"></v-card-title>
+            <v-card-title v-text="card.title" class="text-center"></v-card-title>
           </v-card>
         </v-hover>
       </v-col>
