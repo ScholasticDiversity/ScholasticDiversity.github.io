@@ -1,7 +1,11 @@
 <template>
     <v-main>
         <div class="pa-6 pb-12" style="max-width: 900px; margin: auto;">
-            <router-view />
+            <router-view v-slot="{ Component }">
+                <keep-alive>
+                    <component :is="Component" />
+                </keep-alive>
+            </router-view>
         </div>
     </v-main>
 </template>

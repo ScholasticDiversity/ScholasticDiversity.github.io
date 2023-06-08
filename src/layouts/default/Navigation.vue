@@ -47,6 +47,8 @@
 
 <script lang="ts" setup>
 	import type DrawerMenuItem from '@/interfaces/DrawerMenuItemInterface';
+	import { useRouter } from "vue-router";
+	const router = useRouter();
 	const items: DrawerMenuItem[] = [
 		{ title: 'Home', icon: 'mdi-home', to: { name: 'home' }, },
 		{ title: '-', }, // Divider

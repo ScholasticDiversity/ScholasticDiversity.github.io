@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
   import router from '@/router';
-import { ref, readonly, DeepReadonly } from 'vue';
+  import { ref, readonly, DeepReadonly } from 'vue';
   let cards = ref([
     { title: "Religious Literacy Overview", cols: 4, linkName: "religiousliteracy" },
     { title: "Theology Overview", cols: 4, linkName: "theology" },
