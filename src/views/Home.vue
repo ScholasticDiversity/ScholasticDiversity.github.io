@@ -21,6 +21,7 @@
     { title: "Religious Literacy Overview", cols: 4, linkName: "religiousliteracy" },
     { title: "Theology Overview", cols: 4, linkName: "theology" },
     { title: "Contextual Theology", cols: 4, linkName: "contextualtheologies"},
+    { title: "Judaism", cols: 4, linkName: "judaism"},
   ])
 
   function goto(name: string) {
