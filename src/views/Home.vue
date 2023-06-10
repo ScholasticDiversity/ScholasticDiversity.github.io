@@ -12,6 +12,20 @@
     </v-row>
   </v-container>
   <p class="text-body-1 mb-3">Note that the website is still a Work-in-progress.</p>
+
+  <br>
+  <p class="text-body-1 mb-3">Here are links to other resource websites:</p>
+  <ul>
+    <li><a href="https://standardebooks.org/">Standard Ebooks</a></li>
+    <li><a href="https://www.khanacademy.org/">Khan Academy</a></li>
+    <li><a href="https://www.edx.org/school/harvardx">HarvardX on EdX</a></li>
+    <li><a href="https://www.edx.org/school/oxfordx">OxfordX on EdX</a></li>
+    <li><a href="https://www.edx.org/school/notredamex">NotreDameX on EdX</a></li>
+    <li><a href="https://www.edx.org/school/israelx">IsraelX on EdX</a></li>
+    
+    <li><a href="https://www.sefaria.org/">Sefaria</a></li>
+    <li><a href="https://www.thetorah.com/">The Torah</a></li>
+  </ul>
 </template>
 
 <script lang="ts" setup>
