@@ -21,6 +21,13 @@
 				<p class="text-body">Destruction of the First Temple in Israel by the Babylonians and Nebuchadnezzar. This marks the exile of those in Judah, and the beginning of the Diaspora, and significantly affects the development and Theology of Judaism.</p>
 			</div>
 		</v-timeline-item>
+		<v-timeline-item dot-color="blue-darken-1">
+			<div>
+				<div class="text-h6 mt-n1">c. 559-539 BCE</div>
+				<v-divider class="mb-4"></v-divider>
+				<p class="text-body">Cyrus becomes King of Persia and Babylonia, declares a position of religious toleration, and allows these religious groups (including Jews) to rebuild their Temples. This is recorded in the Cyrus Cylinder and in the Biblical books Ezra-Nehemiah and Chronicles.</p>
+			</div>
+		</v-timeline-item>
 		<v-timeline-item size="small" dot-color="blue-darken-1">
 			<div>
 				<div class="text-h6 mt-n1">c. 516 BCE</div>

@@ -2,7 +2,7 @@
   <p class="text-body-1 mb-3">Welcome to Scholastic Diversity. This website offers a wide variety of overview information and resources for various topics. Below is a list of topics currently available.</p>
   <v-container fluid>
     <v-row>
-      <v-col v-for="card in cards" :cols="card.cols">
+      <v-col v-for="card in cards" :cols="card.cols" :key="card.linkName">
         <v-hover v-slot="{ isHovering, props }">
           <v-card @click="goto(card.linkName)" v-bind="props" :elevation="isHovering ? 5 : 2">
             <v-card-title v-text="card.title" class="text-center"></v-card-title>

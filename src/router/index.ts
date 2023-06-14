@@ -55,4 +55,13 @@ const router = createRouter({
   },
 })
 
+
+/*
+router.afterEach((to, from) => {
+  console.log(window.location.href);
+  sefaria.link({ dynamic: true, mode: "popup-click", contentLang: "english", interfaceLang: "english", });
+})
+*/
+
+
 export default router
