@@ -33,6 +33,11 @@ const routes = [
         path: 'religiousliteracy',
         name: "religiousliteracy",
         component: () => import('@/views/ReligiousLiteracy.vue'),
+      },
+      {
+        path: "tempuscalendar",
+        name: "tempuscalendar",
+        component: () => import("@/views/TempusCalendar.vue"),
       }
     ],
   },

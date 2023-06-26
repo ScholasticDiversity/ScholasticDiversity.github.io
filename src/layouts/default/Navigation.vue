@@ -1,6 +1,6 @@
 <template>
     <v-navigation-drawer>
-	<v-list nav>
+	<v-list nav density="compact">
 		<template v-for="item in items" :key="item.title">
 			<v-divider v-if="item.title === '-'" />
 			<v-list-subheader v-else-if="item.title.startsWith('#')" :title="item.title.substring(1)"></v-list-subheader>
@@ -15,6 +15,8 @@
 				:key="item.title"
 				:value="item.title"
 				link
+				exact
+				:active="isRouteActive(item.to)"
 				/>
 				<!-- Sub menu -->
 				<v-list-group v-else-if="item.items" v-model="item.active">
@@ -23,6 +25,7 @@
 					v-bind="props"
 					:prepend-icon="item.icon"
 					:title="item.title"
+					exact
 					/>
 				</template>
 				<!-- Sub menu item -->
@@ -36,6 +39,7 @@
 					:title="subItem.title"
 					:to="subItem.to"
 					link
+					exact
 					/>
 				</template>
 				</v-list-group>
@@ -47,10 +51,20 @@
 
 <script lang="ts" setup>
 	import type DrawerMenuItem from '@/interfaces/DrawerMenuItemInterface';
-	import { useRouter } from "vue-router";
+	import { RouteLocationRaw, RouteLocationNamedRaw, useRouter } from "vue-router";
+	import { computed } from 'vue'
 	const router = useRouter();
+
+	const isRouteActive = (route: RouteLocationRaw | undefined) => {
+		if (route == undefined) {
+			return false;
+		}
+		return router.currentRoute.value.name == (route as RouteLocationNamedRaw).name;
+	}
+
 	const items: DrawerMenuItem[] = [
 		{ title: 'Home', icon: 'mdi-home', to: { name: 'home' }, },
+		{ title: 'Tempus Calendar', icon: 'mdi-calendar', to: { name: 'tempuscalendar' }, },
 		{ title: '-', }, // Divider
 		{ title: '#Categories', }, // Subheader
 		{ title: 'Mathematics' },
