@@ -4,8 +4,8 @@
     <v-row>
       <v-col v-for="card in cards" :cols="card.cols" :key="card.linkName">
         <v-hover v-slot="{ isHovering, props }">
-          <v-card @click="goto(card.linkName)" v-bind="props" :elevation="isHovering ? 5 : 2" density="compact">
-            <v-card-title class="text-center">{{ card.title }}</v-card-title>
+          <v-card :to="{ name: card.linkName }" v-bind="props" :elevation="isHovering ? 5 : 2" hover density="compact">
+            <v-card-text class="text-center"><strong>{{ card.title }}</strong></v-card-text>
           </v-card>
         </v-hover>
       </v-col>
