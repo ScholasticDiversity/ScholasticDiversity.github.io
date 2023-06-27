@@ -36,6 +36,7 @@
     { title: "Theology Overview", cols: 4, linkName: "theology" },
     { title: "Contextual Theology", cols: 4, linkName: "contextualtheologies"},
     { title: "Judaism", cols: 4, linkName: "judaism"},
+    { title: "Christianity", cols: 4, linkName: "christianity"},
   ])
 
   function goto(name: string) {
