@@ -15,6 +15,7 @@ import * as directives from 'vuetify/directives';
 import * as labsComponents from 'vuetify/labs/components';
 
 import { en } from 'vuetify/locale';
+//import { md2, md3 } from "vuetify/blueprints";
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
@@ -33,4 +34,5 @@ export default createVuetify({
     fallback: 'en',
     messages: { en },
   },
+  //blueprint: md1,
 })

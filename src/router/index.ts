@@ -15,6 +15,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
       },
       {
+        path: "tempuscalendar",
+        name: "tempuscalendar",
+        component: () => import("@/views/TempusCalendar.vue"),
+      },
+      {
+        path: 'blog',
+        name: 'blog',
+        component: () => import("@/views/Blog.vue"),
+      },
+      {
         path: 'contextualtheologies',
         name: "contextualtheologies",
         component: () => import('@/views/ContextualTheology.vue'),
@@ -34,11 +44,6 @@ const routes = [
         name: "religiousliteracy",
         component: () => import('@/views/ReligiousLiteracy.vue'),
       },
-      {
-        path: "tempuscalendar",
-        name: "tempuscalendar",
-        component: () => import("@/views/TempusCalendar.vue"),
-      }
     ],
   },
 ]

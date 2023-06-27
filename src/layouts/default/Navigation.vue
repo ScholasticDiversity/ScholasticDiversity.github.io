@@ -1,6 +1,6 @@
 <template>
     <v-navigation-drawer>
-	<v-list nav density="compact">
+	<v-list density="compact" nav :lines="false">
 		<template v-for="item in items" :key="item.title">
 			<v-divider v-if="item.title === '-'" />
 			<v-list-subheader v-else-if="item.title.startsWith('#')" :title="item.title.substring(1)"></v-list-subheader>
@@ -65,6 +65,7 @@
 	const items: DrawerMenuItem[] = [
 		{ title: 'Home', icon: 'mdi-home', to: { name: 'home' }, },
 		{ title: 'Tempus Calendar', icon: 'mdi-calendar', to: { name: 'tempuscalendar' }, },
+		{ title: 'Blog', icon: 'mdi-notebook', to: { name: 'blog' }, },
 		{ title: '-', }, // Divider
 		{ title: '#Categories', }, // Subheader
 		{ title: 'Mathematics' },
