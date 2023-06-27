@@ -25,6 +25,9 @@
     
     <li><a href="https://www.sefaria.org/">Sefaria</a></li>
     <li><a href="https://www.thetorah.com/">The Torah</a></li>
+
+    <li><a href="https://www.qchristian.org/">Q Christian Fellowship</a></li>
+    <li><a href="https://www.queertheology.com/">Queer Theology</a></li>
   </ul>
 </template>
 
