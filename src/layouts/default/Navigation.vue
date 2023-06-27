@@ -92,7 +92,7 @@
 				{ title: 'Jainism' },
 				{ title: 'Greek Paganism' },
 				{ title: 'Mystery Religions' },
-				{ title: 'Christianity' },
+				{ title: 'Christianity', to: { name: "christianity" } },
 				{ title: 'Gnosticism' },
 				{ title: 'Islam' },
 				{ title: 'Baha\'i' },
