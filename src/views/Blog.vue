@@ -10,8 +10,8 @@
 			</v-card-text>
 		</v-card>
 		<v-divider></v-divider>
-		<p>Note that these links redirect to articles I have written on Post.News.</p>
 	</template>
+	<p>Note that these links redirect to articles I have written on Post.News.</p>
 </template>
   
 <script lang="ts" setup>
