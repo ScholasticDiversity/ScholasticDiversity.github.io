@@ -8,3 +8,13 @@
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
+
+i.footnote {
+	display: none;
+}
+.indent p {
+	text-indent: 1em;
+}
+.scripturetext {
+	font-size: 1.1em !important;
+}

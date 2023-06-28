@@ -32,7 +32,10 @@
 </template>
 
 <script lang="ts" setup>
-  import router from '@/router';
+  //import router from '@/router';
+  import { useRoute, useRouter } from 'vue-router';
+  const route = useRoute();
+  const router = useRouter();
   import { ref, readonly, DeepReadonly } from 'vue';
   let cards = ref([
     { title: "Religious Literacy Overview", cols: 4, linkName: "religiousliteracy" },
@@ -41,6 +44,7 @@
     { title: "Judaism", cols: 4, linkName: "judaism"},
     { title: "Christianity", cols: 4, linkName: "christianity"},
   ])
+
 
   function goto(name: string) {
     router.push({ name: name });

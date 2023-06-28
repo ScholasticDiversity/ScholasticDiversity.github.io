@@ -49,6 +49,23 @@ const routes = [
         name: "religiousliteracy",
         component: () => import('@/views/ReligiousLiteracy.vue'),
       },
+      {
+        path: 'scriptures',
+        name: "scriptures",
+        //component: () => import('@/views/Tanakh.vue'),
+      },
+      {
+        path: 'sriptures/j',
+        name: "jewishscriptures",
+        component: () => import("@/views/Home.vue"),
+        props: { categories: [] },
+      },
+      {
+        path: "scriptures/j/:categories+",
+        name: "sefaria",
+        component: () => import("@/views/Tanakh.vue"),
+        props: true,
+      },
     ],
   },
 ]

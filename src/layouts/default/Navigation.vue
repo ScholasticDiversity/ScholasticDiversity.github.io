@@ -104,10 +104,11 @@
 		{ title: 'Scriptures', 
 			items: [
 				{ title: 'Vedas' },
-				{ title: 'Tanakh (Hebrew Bible)' },
+				{ title: 'Tanakh (Hebrew Bible)', to: { name: "sefaria", params: { categories: ["Tanakh"] } } },
+				{ title: 'Christian Old Testament' },
 				{ title: 'OT Apocrypha/Deuterocanon' },
 				{ title: 'New Testament' },
-				{ title: 'Talmud' },
+				{ title: 'Talmud', to: { name: "sefaria", params: { categories: ["Talmud"] } } },
 				{ title: 'Qur\'an' },
 				{ title: 'The Book of Mormon' },
 				{ title: 'Gnostic Gospels' },
