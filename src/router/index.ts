@@ -1,7 +1,7 @@
 // Composables
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
-const routes = [
+const routes: Array<any> = [
   {
     path: '/',
     component: () => import('@/layouts/default/Default.vue'),
