@@ -43,6 +43,7 @@
     { title: "Contextual Theology", cols: 4, linkName: "contextualtheologies"},
     { title: "Judaism", cols: 4, linkName: "judaism"},
     { title: "Christianity", cols: 4, linkName: "christianity"},
+    { title: "Scriptures", cols: 4, linkName: "scriptures"},
   ])
 
 
