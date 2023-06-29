@@ -113,7 +113,7 @@
 				{ title: 'Bavli Talmud', to: { name: "sefaria", params: { categories: ["Talmud", "Bavli"] } } },
 				{ title: 'Yerushalmi Talmud', to: { name: "sefaria", params: { categories: ["Talmud", "Yerushalmi"] } } },
 				{ title: "Other Jewish Scriptures", to: { name: "jewishscriptures", params: { categories: [] } } },
-				{ title: 'Qur\'an' },
+				{ title: 'Qur\'an', to: { name: "quran" } },
 				{ title: 'The Book of Mormon' },
 				{ title: 'Gnostic Gospels' },
 			]

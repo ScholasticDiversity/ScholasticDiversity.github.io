@@ -71,6 +71,22 @@ const routes: Array<any> = [
         component: () => import("@/views/Tanakh.vue"),
         props: true,
       },
+      {
+        path: 'sriptures/q',
+        name: "quran",
+        component: () => import("@/views/Quran.vue"),
+      },
+      {
+        path: 'sriptures/q/:id',
+        name: "qurantranslation",
+        component: () => import("@/views/QuranTranslation.vue"),
+      },
+      {
+        path: 'sriptures/q/:id/:surah',
+        name: "quransurah",
+        component: () => import("@/views/QuranSurah.vue"),
+        props: true,
+      },
     ],
   },
 ]
