@@ -20,6 +20,15 @@
 			<GeneralIndex :root="jewishScriptures_custom" hideroot="true" :depth="2" isroot="true" :categories="[]"></GeneralIndex>
 		</v-row>
 	</v-container>
+
+	<p class="text-overline mt-1"><strong>Islamic</strong></p>
+	<!--<p class="text-body-2 mb-2">Powered by <a href="https://alquran.cloud">alquran.cloud</a></p>-->
+	<v-divider class="mb-3"></v-divider>
+	<v-container fluid :style="'margin: 0px; padding: 0px;'"> <!-- Not in Text, show index -->
+		<v-row dense :style="'margin: 0px; padding: 0px;'">
+			<GeneralIndex :root="islamicScriptures" hideroot="true" :depth="2" isroot="true" :categories="[]"></GeneralIndex>
+		</v-row>
+	</v-container>
 </template>
 
 <script lang="ts" setup>
@@ -49,6 +58,10 @@
 				href: "https://ccat.sas.upenn.edu/nets/edition/",
 			},
 		],*/
+	});
+	let islamicScriptures = ref({
+		title: "Qur'an",
+		to: { name: "quran" },
 	})
 </script>
 
