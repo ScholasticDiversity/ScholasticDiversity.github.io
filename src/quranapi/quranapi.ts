@@ -1,6 +1,6 @@
 export default {
 	async getEnglishVersions() {
-		const res = await fetch("http://api.alquran.cloud/v1/edition/language/en", { method: "GET" });
+		const res = await fetch("https://api.alquran.cloud/v1/edition/language/en", { method: "GET" });
 		if (!res.ok) {
 			const message = `An error has occured: ${res.status} - ${res.statusText}`;
             throw new Error(message);
@@ -19,7 +19,7 @@ export default {
 		return {};
 	},
 	async getMeta() {
-		const res = await fetch(`http://api.alquran.cloud/v1/meta`, { method: "GET" });
+		const res = await fetch(`https://api.alquran.cloud/v1/meta`, { method: "GET" });
 		if (!res.ok) {
 			const message = `An error has occured: ${res.status} - ${res.statusText}`;
             throw new Error(message);
@@ -38,7 +38,7 @@ export default {
 		return {};
 	},
 	async getSurah(num: string, id: string) {
-		const res = await fetch(`http://api.alquran.cloud/v1/surah/${num}/${id}`, { method: "GET" });
+		const res = await fetch(`https://api.alquran.cloud/v1/surah/${num}/${id}`, { method: "GET" });
 		if (!res.ok) {
 			const message = `An error has occured: ${res.status} - ${res.statusText}`;
             throw new Error(message);
