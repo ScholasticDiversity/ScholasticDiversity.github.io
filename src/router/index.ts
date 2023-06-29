@@ -52,7 +52,7 @@ const routes: Array<any> = [
       {
         path: 'scriptures',
         name: "scriptures",
-        //component: () => import('@/views/Tanakh.vue'),
+        component: () => import('@/views/Scriptures.vue'),
       },
       {
         path: 'sriptures/j',

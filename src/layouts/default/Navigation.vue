@@ -103,6 +103,7 @@
 		},
 		{ title: 'Scriptures', 
 			items: [
+				{ title: "Overview", to: { name: "scriptures" } },
 				{ title: 'Vedas' },
 				{ title: 'Tanakh (Hebrew Bible)', to: { name: "sefaria", params: { categories: ["Tanakh"] } } },
 				{ title: 'Christian Old Testament' },

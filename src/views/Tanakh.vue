@@ -47,6 +47,7 @@
 
 <script lang="ts" setup>
 	// TODO: Sefaria.sectionString - Returns a pair of nice strings (en, he) of the sections indicated in ref
+	// TODO: Handle when there's no English text
 
 	const props = defineProps({
 		categories: { type: Array<string>, required: true },
@@ -91,28 +92,28 @@
 	})
 
 	// TODO: Deal with schemas that are more complex
-	// Some have a tree of nodes to deal with subsections.
+	// Some have a tree of nodes to deal with subsections. An example is Chayei Adam.
 
 	let tanakhToc = ref(Sefaria.toc[0]);
 	let textShape = ref([] as any);
 	let indexDetails = ref({} as any);
 	let hasChapters = computed(() => {
-		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length] == 'Perek';
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes && indexDetails.value.schema.addressTypes[sections.value.length] == 'Perek';
 	});
 	let isChapter = computed(() => {
-		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length - 1] == 'Perek';
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes && indexDetails.value.schema.addressTypes[sections.value.length - 1] == 'Perek';
 	});
 	let hasDafs = computed(() => {
-		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length] == 'Talmud';
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes && indexDetails.value.schema.addressTypes[sections.value.length] == 'Talmud';
 	});
 	let isDaf = computed(() => {
-		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length - 1] == 'Talmud';
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes && indexDetails.value.schema.addressTypes[sections.value.length - 1] == 'Talmud';
 	});
 	let hasIntSections = computed(() => { // Integer sections are used for paragraphs
-		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length] == 'Integer';
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes && indexDetails.value.schema.addressTypes[sections.value.length] == 'Integer';
 	});
 	let isIntSection = computed(() => {
-		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length - 1] == 'Integer';
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes && indexDetails.value.schema.addressTypes[sections.value.length - 1] == 'Integer';
 	});
 	let chapters = computed(() => { // TODO: This isn't working on refresh
 		if (indexDetails.value.schema) { // Note: Perek is Hebrew for Chapter
