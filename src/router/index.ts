@@ -55,6 +55,11 @@ const routes: Array<any> = [
         component: () => import('@/views/Scriptures.vue'),
       },
       {
+        path: 'scriptures/septuagint',
+        name: "septuagint",
+        component: () => import('@/views/Septuagint.vue'),
+      },
+      {
         path: 'sriptures/j',
         name: "jewishscriptures",
         component: () => import("@/views/Tanakh.vue"),

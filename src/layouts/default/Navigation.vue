@@ -108,6 +108,7 @@
 				{ title: 'Tanakh (Hebrew Bible)', to: { name: "sefaria", params: { categories: ["Tanakh"] } } },
 				{ title: 'Christian Old Testament' },
 				{ title: 'OT Apocrypha/Deuterocanon' },
+				{ title: 'Septuagint', to: { name: "septuagint" } },
 				{ title: 'New Testament' },
 				{ title: 'Bavli Talmud', to: { name: "sefaria", params: { categories: ["Talmud", "Bavli"] } } },
 				{ title: 'Yerushalmi Talmud', to: { name: "sefaria", params: { categories: ["Talmud", "Yerushalmi"] } } },
