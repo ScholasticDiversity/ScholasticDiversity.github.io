@@ -109,6 +109,7 @@
 				{ title: 'OT Apocrypha/Deuterocanon' },
 				{ title: 'New Testament' },
 				{ title: 'Talmud', to: { name: "sefaria", params: { categories: ["Talmud"] } } },
+				{ title: "Other Jewish Scriptures", to: { name: "jewishscriptures", params: { categories: [] } } },
 				{ title: 'Qur\'an' },
 				{ title: 'The Book of Mormon' },
 				{ title: 'Gnostic Gospels' },

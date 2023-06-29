@@ -13,13 +13,25 @@
 
 	<v-container fluid :style="'margin: 0px; padding: 0px;'" v-if="isText && sections.length == 0"> <!-- Text root, show sections -->
 		<p v-if="indexDetails.enDesc" class="text-body-1 mb-6 mt-3 text-justify">{{ indexDetails.enDesc }}</p>
-		<p class="text-overline mt-1"><strong>Chapters</strong></p>
-		<v-divider class="mb-3"></v-divider>
-		<v-btn variant="text" class="ma-1" v-for="chapter in chapters" :key="chapter" :href="'/#/scriptures/j/t/' + textName + '.' + chapter" exact><strong>{{ chapter }}</strong></v-btn>
+		<div v-if="hasChapters">
+			<p class="text-overline mt-1"><strong>Chapters</strong></p>
+			<v-divider class="mb-3"></v-divider>
+			<v-btn variant="text" class="ma-1" v-for="chapter in chapters" :key="chapter" :href="'/#/scriptures/j/t/' + textName + '.' + chapter" exact><strong>{{ chapter }}</strong></v-btn>
+		</div>
+		<div v-if="hasDafs">
+			<p class="text-overline mt-1"><strong>Dafs</strong></p>
+			<v-divider class="mb-3"></v-divider>
+			<v-btn variant="text" class="ma-1" v-for="daf in dafs" :key="daf" :href="'/#/scriptures/j/t/' + textName + '.' + daf" exact><strong>{{ daf }}</strong></v-btn>
+		</div>
 	</v-container>
 	<v-container fluid :style="'margin: auto; padding: 0px; max-width: 800px;'" v-else-if="isText && sections.length > 0"> <!-- Inside a text section, show subsections or text -->
-		<div v-if="indexDetails.schema && indexDetails.schema.addressTypes[sections.length - 1] == 'Perek'"> <!-- If last section is a chapter, show text for whole chapter -->
+		<div v-if="isChapter"> <!-- If last section is a chapter, show text for whole chapter -->
 			<p class="text-overline mt-1"><strong>Chapter {{ sections[sections.length - 1] }}</strong></p>
+			<v-divider class="mb-3"></v-divider>
+			<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>
+		</div>
+		<div v-else-if="isDaf"> <!-- If last section is Talmud value, show text -->
+			<p class="text-overline mt-1"><strong>Daf {{ sections[sections.length - 1] }}</strong></p>
 			<v-divider class="mb-3"></v-divider>
 			<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>
 		</div>
@@ -81,6 +93,18 @@
 	let tanakhToc = ref(Sefaria.toc[0]);
 	let textShape = ref([] as any);
 	let indexDetails = ref({} as any);
+	let hasChapters = computed(() => {
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length] == 'Perek';
+	});
+	let isChapter = computed(() => {
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length - 1] == 'Perek';
+	});
+	let hasDafs = computed(() => {
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length] == 'Talmud';
+	});
+	let isDaf = computed(() => {
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length - 1] == 'Talmud';
+	});
 	let chapters = computed(() => { // TODO: This isn't working on refresh
 		if (indexDetails.value.schema) { // Note: Perek is Hebrew for Chapter
 			let chapterIndex = indexDetails.value.schema.addressTypes.indexOf("Perek");
@@ -92,6 +116,26 @@
 		}
 		return 0;
 	});
+	let dafs = computed(() => {
+		if (indexDetails.value.schema) {
+			let dafsIndex = indexDetails.value.schema.addressTypes.indexOf("Talmud");
+			if (dafsIndex > -1) {
+				let dafLength = indexDetails.value.schema.lengths[dafsIndex];
+				console.log("DafsIndex: ", dafsIndex);
+				let dafs = [];
+				let current = 2;
+				for (let i = 2; i < dafLength; i+=2) {
+					dafs.push(current + "a");
+					if (i + 1 < dafLength) {
+						dafs.push(current + "b");
+					}
+					current += 1;
+				}
+				return dafs;
+			}
+		}
+		return [];
+	})
 	const isText = computed(() => {
 		if (!props.categories) {
 			return false;
@@ -114,6 +158,7 @@
 	})
 	const sectionTextInfo = ref({} as any);
 	const sectionText = computed(() => {
+		console.log(sectionTextInfo.value)
 		if (!sectionTextInfo.value.text) return "";
 		return sectionTextInfo.value.text.join(" ").replaceAll('יהוה', 'LORD').replaceAll('— ', '—');
 	})
@@ -139,8 +184,15 @@
 
 			if (_sections.length > 1) {
 				console.log("Length over 1");
-				if (indexDetails.value.schema.addressTypes[_sections.length - 2] == 'Perek') {
-					sectionTextInfo.value = await Sefaria.getText(_sections.join("."))
+				let sectionAddressType = indexDetails.value.schema.addressTypes[_sections.length - 2];
+				if (sectionAddressType == 'Perek' || sectionAddressType == 'Talmud') {
+					let textCache = Sefaria.getTextFromCache(_sections.join("."));
+					if (textCache) {
+						sectionTextInfo.value = textCache;
+						console.log("Text from cache!");
+					} else {
+						sectionTextInfo.value = await Sefaria.getText(_sections.join("."))
+					}
 					console.log(sectionTextInfo.value)
 				}
 			}
@@ -160,8 +212,15 @@
 			}
 
 			if (_sections.length > 1) {
-				if (indexDetails.value.schema.addressTypes[_sections.length - 2] == 'Perek') {
-					sectionTextInfo.value = await Sefaria.getText(_sections.join("."))
+				let sectionAddressType = indexDetails.value.schema.addressTypes[_sections.length - 2];
+				if (sectionAddressType == 'Perek' || sectionAddressType == 'Talmud') {
+					let textCache = Sefaria.getTextFromCache(_sections.join("."));
+					if (textCache) {
+						sectionTextInfo.value = textCache;
+						console.log("Text from cache!");
+					} else {
+						sectionTextInfo.value = await Sefaria.getText(_sections.join("."))
+					}
 					console.log(sectionTextInfo.value)
 				}
 			}

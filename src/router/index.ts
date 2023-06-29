@@ -57,7 +57,7 @@ const routes: Array<any> = [
       {
         path: 'sriptures/j',
         name: "jewishscriptures",
-        component: () => import("@/views/Home.vue"),
+        component: () => import("@/views/Tanakh.vue"),
         props: { categories: [] },
       },
       {
