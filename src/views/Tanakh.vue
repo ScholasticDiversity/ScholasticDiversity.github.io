@@ -23,15 +23,15 @@
 			<v-divider class="mb-3"></v-divider>
 			<v-btn variant="text" class="ma-1" v-for="daf in dafs" :key="daf" :href="'/#/scriptures/j/t/' + textName + '.' + daf" exact><strong>{{ daf }}</strong></v-btn>
 		</div>
+		<div v-if="hasIntSections">
+			<p class="text-overline mt-1"><strong>Paragraphs</strong></p>
+			<v-divider class="mb-3"></v-divider>
+			<v-btn variant="text" class="ma-1" v-for="p in intSections" :key="p" :href="'/#/scriptures/j/t/' + textName + '.' + p" exact><strong>{{ p }}</strong></v-btn>
+		</div>
 	</v-container>
 	<v-container fluid :style="'margin: auto; padding: 0px; max-width: 800px;'" v-else-if="isText && sections.length > 0"> <!-- Inside a text section, show subsections or text -->
-		<div v-if="isChapter"> <!-- If last section is a chapter, show text for whole chapter -->
-			<p class="text-overline mt-1"><strong>Chapter {{ sections[sections.length - 1] }}</strong></p>
-			<v-divider class="mb-3"></v-divider>
-			<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>
-		</div>
-		<div v-else-if="isDaf"> <!-- If last section is Talmud value, show text -->
-			<p class="text-overline mt-1"><strong>Daf {{ sections[sections.length - 1] }}</strong></p>
+		<div v-if="isChapter || isIntSection || isDaf"> <!-- If last section is a chapter, show text for whole chapter -->
+			<p class="text-overline mt-1"><strong>{{ indexDetails.schema ? indexDetails.schema.sectionNames[sections.length - 1] : "" }} {{ sections[sections.length - 1] }}</strong></p>
 			<v-divider class="mb-3"></v-divider>
 			<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>
 		</div>
@@ -90,6 +90,9 @@
 		return current;
 	})
 
+	// TODO: Deal with schemas that are more complex
+	// Some have a tree of nodes to deal with subsections.
+
 	let tanakhToc = ref(Sefaria.toc[0]);
 	let textShape = ref([] as any);
 	let indexDetails = ref({} as any);
@@ -104,6 +107,12 @@
 	});
 	let isDaf = computed(() => {
 		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length - 1] == 'Talmud';
+	});
+	let hasIntSections = computed(() => { // Integer sections are used for paragraphs
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length] == 'Integer';
+	});
+	let isIntSection = computed(() => {
+		return indexDetails.value.schema && indexDetails.value.schema.addressTypes[sections.value.length - 1] == 'Integer';
 	});
 	let chapters = computed(() => { // TODO: This isn't working on refresh
 		if (indexDetails.value.schema) { // Note: Perek is Hebrew for Chapter
@@ -135,6 +144,15 @@
 			}
 		}
 		return [];
+	});
+	let intSections = computed(() => { // Integer sections are used for paragraphs
+		if (indexDetails.value.schema) { // Note: Perek is Hebrew for Chapter
+			let chapterIndex = indexDetails.value.schema.addressTypes.indexOf("Integer");
+			if (chapterIndex > -1) {
+				return indexDetails.value.schema.lengths[chapterIndex];
+			}
+		}
+		return 0;
 	})
 	const isText = computed(() => {
 		if (!props.categories) {
@@ -160,7 +178,11 @@
 	const sectionText = computed(() => {
 		console.log(sectionTextInfo.value)
 		if (!sectionTextInfo.value.text) return "";
-		return sectionTextInfo.value.text.join(" ").replaceAll('יהוה', 'LORD').replaceAll('— ', '—');
+		if (typeof sectionTextInfo.value.text === "string") {
+			return sectionTextInfo.value.text.replaceAll('יהוה', 'LORD').replaceAll('— ', '—');
+		} else {
+			return sectionTextInfo.value.text.join(" ").replaceAll('יהוה', 'LORD').replaceAll('— ', '—');
+		}
 	})
 	/*const sectionText = computed(async () => {
 		if (isText.value) {
@@ -185,7 +207,7 @@
 			if (_sections.length > 1) {
 				console.log("Length over 1");
 				let sectionAddressType = indexDetails.value.schema.addressTypes[_sections.length - 2];
-				if (sectionAddressType == 'Perek' || sectionAddressType == 'Talmud') {
+				if (sectionAddressType == 'Perek' || sectionAddressType == 'Talmud' || sectionAddressType == "Integer") {
 					let textCache = Sefaria.getTextFromCache(_sections.join("."));
 					if (textCache) {
 						sectionTextInfo.value = textCache;
@@ -213,7 +235,7 @@
 
 			if (_sections.length > 1) {
 				let sectionAddressType = indexDetails.value.schema.addressTypes[_sections.length - 2];
-				if (sectionAddressType == 'Perek' || sectionAddressType == 'Talmud') {
+				if (sectionAddressType == 'Perek' || sectionAddressType == 'Talmud' || sectionAddressType == "Integer") {
 					let textCache = Sefaria.getTextFromCache(_sections.join("."));
 					if (textCache) {
 						sectionTextInfo.value = textCache;
