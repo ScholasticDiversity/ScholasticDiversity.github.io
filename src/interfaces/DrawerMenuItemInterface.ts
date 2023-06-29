@@ -8,6 +8,7 @@ export default interface DrawerMenuItem {
   icon?: string;
   /** Router Location */
   to?: RouteLocationRaw;
+  href?: string;
   /** is active */
   active?: boolean;
   /** Sub Items */

@@ -8,10 +8,11 @@
 				<!-- Menu Item -->
 				<v-list-item
 				v-if="!item.items"
-				:disabled="!item.to"
+				:disabled="!item.to && !item.href"
 				:prepend-icon="item.icon"
 				:title="item.title"
 				:to="item.to"
+				:href="item.href"
 				:key="item.title"
 				:value="item.title"
 				link
@@ -34,10 +35,11 @@
 					<v-list-subheader v-else-if="item.title.startsWith('#')" :title="item.title.substring(1)"></v-list-subheader>
 					<v-list-item
 					v-else
-					:disabled="!subItem.to"
+					:disabled="!subItem.to && !subItem.href"
 					:prepend-icon="subItem.icon"
 					:title="subItem.title"
 					:to="subItem.to"
+					:href="subItem.href"
 					link
 					exact
 					/>
@@ -66,6 +68,7 @@
 		{ title: 'Home', icon: 'mdi-home', to: { name: 'home' }, },
 		{ title: 'Tempus Calendar', icon: 'mdi-calendar', to: { name: 'tempuscalendar' }, },
 		{ title: 'Blog', icon: 'mdi-notebook', to: { name: 'blog' }, },
+		{ title: "Github", href: "https://github.com/ScholasticDiversity/ScholasticDiversity.github.io" },
 		{ title: '-', }, // Divider
 		{ title: '#Categories', }, // Subheader
 		{ title: 'Mathematics' },

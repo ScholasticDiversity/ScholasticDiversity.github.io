@@ -41,6 +41,7 @@
 	import Quran from "@/quranapi/quranapi";
 	let surahs = ref(0);
 	let version = ref({} as any);
+	let metadata = ref({} as any);
 
 	let index = ref({
 		title: route.params.id,
@@ -52,18 +53,35 @@
 		] as Array<any>,
 	});
 
-	onBeforeMount(async () => {
+	watch(() => route.params.id, async (newId) => {
 		// Get metadata of number of surahs and their names
-		let metadata = await Quran.getMeta();
-		surahs.value = metadata.data.surahs.count;
-		for (let s of metadata.data.surahs.references) {
+		surahs.value = metadata.value.data.surahs.count;
+		index.value.contents[0].contents = [];
+		for (let s of metadata.value.data.surahs.references) {
 			index.value.contents[0].contents.push({
 				title: s.number + ". " + s.englishName,
 				desc: s.englishNameTranslation,
 				to: { name: "quransurah", params: { id: route.params.id, surah: s.number } },
 			});
 		}
-		console.log(metadata.data);
+		console.log(metadata.value.data);
+
+		// Get name of current version
+		version.value = await Quran.getVersionInfoFromIdentifier(route.params.id as string);
+	})
+
+	onBeforeMount(async () => {
+		// Get metadata of number of surahs and their names
+		metadata.value = await Quran.getMeta();
+		surahs.value = metadata.value.data.surahs.count;
+		for (let s of metadata.value.data.surahs.references) {
+			index.value.contents[0].contents.push({
+				title: s.number + ". " + s.englishName,
+				desc: s.englishNameTranslation,
+				to: { name: "quransurah", params: { id: route.params.id, surah: s.number } },
+			});
+		}
+		console.log(metadata.value.data);
 
 		// Get name of current version
 		version.value = await Quran.getVersionInfoFromIdentifier(route.params.id as string);
