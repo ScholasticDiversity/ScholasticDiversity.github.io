@@ -20,6 +20,7 @@ export default {
 					contents: [
 						{
 							title: "1 Nephi",
+							intro: "An account of Lehi and his wife Sariah, and his four sons, being called, (beginning at the eldest) Laman, Lemuel, Sam, and Nephi. The Lord warns Lehi to depart out of the land of Jerusalem, because he prophesieth unto the people concerning their iniquity and they seek to destroy his life. He taketh three days’ journey into the wilderness with his family. Nephi taketh his brethren and returneth to the land of Jerusalem after the record of the Jews. The account of their sufferings. They take the daughters of Ishmael to wife. They take their families and depart into the wilderness. Their sufferings and afflictions in the wilderness. The course of their travels. They come to the large waters. Nephi’s brethren rebel against him. He confoundeth them, and buildeth a ship. They call the name of the place Bountiful. They cross the large waters into the promised land, and so forth. This is according to the account of Nephi; or in other words, I, Nephi, wrote this record.",
 							chapters: 22,
 							to: { name: "lds", params: { book: ["Book of Mormon", "1 Nephi"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/bofm/1-ne?lang=eng",
@@ -27,6 +28,7 @@ export default {
 						},
 						{
 							title: "2 Nephi",
+							intro: "An account of the death of Lehi. Nephi’s brethren rebel against him. The Lord warns Nephi to depart into the wilderness. His journeyings in the wilderness, and so forth.",
 							chapters: 33,
 							to: { name: "lds", params: { book: ["Book of Mormon", "2 Nephi"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/bofm/2-ne?lang=eng",
@@ -34,6 +36,7 @@ export default {
 						},
 						{
 							title: "Jacob",
+							intro: "The words of his preaching unto his brethren. He confoundeth a man who seeketh to overthrow the doctrine of Christ. A few words concerning the history of the people of Nephi.",
 							chapters: 6,
 							to: { name: "lds", params: { book: ["Book of Mormon", "Jacob"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/bofm/jacob?lang=eng",
@@ -76,6 +79,7 @@ export default {
 						},
 						{
 							title: "Alma",
+							intro: "The account of Alma, who was the son of Alma, the first and chief judge over the people of Nephi, and also the high priest over the Church. An account of the reign of the judges, and the wars and contentions among the people. And also an account of a war between the Nephites and the Lamanites, according to the record of Alma, the first and chief judge.",
 							chapters: 63,
 							to: { name: "lds", params: { book: ["Book of Mormon", "Alma"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/bofm/alma?lang=eng",
@@ -83,6 +87,7 @@ export default {
 						},
 						{
 							title: "Helaman",
+							intro: "An account of the Nephites. Their wars and contentions, and their dissensions. And also the prophecies of many holy prophets, before the coming of Christ, according to the records of Helaman, who was the son of Helaman, and also according to the records of his sons, even down to the coming of Christ. And also many of the Lamanites are converted. An account of their conversion. An account of the righteousness of the Lamanites, and the wickedness and abominations of the Nephites, according to the record of Helaman and his sons, even down to the coming of Christ, which is called the book of Helaman, and so forth.",
 							chapters: 16,
 							to: { name: "lds", params: { book: ["Book of Mormon", "Helaman"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/bofm/hel?lang=eng",
@@ -90,6 +95,7 @@ export default {
 						},
 						{
 							title: "3 Nephi",
+							intro: "And Helaman was the son of Helaman, who was the son of Alma, who was the son of Alma, being a descendant of Nephi who was the son of Lehi, who came out of Jerusalem in the first year of the reign of Zedekiah, the king of Judah.",
 							chapters: 30,
 							to: { name: "lds", params: { book: ["Book of Mormon", "3 Nephi"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/bofm/3-ne?lang=eng",
@@ -97,6 +103,7 @@ export default {
 						},
 						{
 							title: "4 Nephi",
+							intro: "An account of the people of Nephi, according to his record.",
 							chapters: 1,
 							to: { name: "lds", params: { book: ["Book of Mormon", "4 Nephi"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/bofm/4-ne?lang=eng",
@@ -104,6 +111,7 @@ export default {
 						},
 						{
 							title: "Mormon",
+							intro: "The record of the Jaredites, taken from the twenty-four plates found by the people of Limhi in the days of King Mosiah.",
 							chapters: 9,
 							to: { name: "lds", params: { book: ["Book of Mormon", "Mormon"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/bofm/morm?lang=eng",
@@ -140,6 +148,7 @@ export default {
 					contents: [
 						{
 							title: "Moses",
+							intro: "An extract from the translation of the Bible as revealed to Joseph Smith the Prophet, June 1830–February 1831.",
 							chapters: 8,
 							to: { name: "lds", params: { book: ["The Pearl of Great Price", "Moses"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/pgp/moses?lang=eng",
@@ -147,6 +156,7 @@ export default {
 						},
 						{
 							title: "Abraham",
+							intro: "A Translation of some ancient Records that have fallen into our hands from the catacombs of Egypt. The writings of Abraham while he was in Egypt, called the Book of Abraham, written by his own hand, upon papyrus.",
 							chapters: 5,
 							to: { name: "lds", params: { book: ["The Pearl of Great Price", "Abraham"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/pgp/abr?lang=eng",
@@ -154,6 +164,7 @@ export default {
 						},
 						{
 							title: "Joseph Smith--Matthew",
+							intro: "An extract from the translation of the Bible as revealed to Joseph Smith the Prophet in 1831: Matthew 23:39 and chapter 24.",
 							chapters: 1,
 							to: { name: "lds", params: { book: ["The Pearl of Great Price", "Joseph Smith--Matthew"] } },
 							external: "https://site.churchofjesuschrist.org/study/scriptures/pgp/js-m/1?lang=eng",

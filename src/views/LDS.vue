@@ -13,23 +13,23 @@
 	<h1 class="text-h5 text-center">{{ index.title }}</h1>
 	<v-divider></v-divider>
 
-	<!--<p class="text-overline mt-1"><strong>Jewish</strong></p>
-	<p class="text-body-2 mb-2">Powered by <a href="https://sefaria.org">Sefaria</a></p>
-	<v-divider class="mb-3"></v-divider>-->
-	<v-container fluid :style="'margin: 0px; padding: 0px;'"> <!-- Not in Text, show index -->
-		<v-row dense :style="'margin: 0px; padding: 0px;'" v-if="!hasChapters">
+	<v-container fluid :style="'margin: 0px; padding: 0px;'" v-if="!hasChapters"> <!-- Not in Text, show index -->
+		<v-row dense :style="'margin: 0px; padding: 0px;'">
 			<GeneralIndex :root="index" hideroot="true" :depth="3" isroot="true" :categories="[]"></GeneralIndex>
 		</v-row>
-		<div v-else-if="!inChapter">
-			<p class="text-overline mt-1"><strong>Chapters</strong></p>
-			<v-divider class="mb-3"></v-divider>
-			<v-btn variant="text" class="ma-1" v-for="chapter in chapters" :key="chapter" :href="'/#/scriptures/l/' + book.join('/') + '.' + chapter" exact><strong>{{ chapter }}</strong></v-btn>
-		</div>
-		<div v-else style="max-width: 800px; margin: auto;">
-			<p class="text-overline mt-1"><strong>Chapter {{ getChapter }}</strong></p>
-			<v-divider class="mb-3"></v-divider>
-			<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>
-		</div>
+		<p class="text-body-2 mt-6" v-if="index.external"><a :href="index.external">View <span v-if="index.externalType">{{ index.externalType }}</span></a> from The Church of Jesus Christ of Latter-day Saints Website</p>
+	</v-container>
+	<v-container fluid :style="'margin: 0px; padding: 0px;'" v-else-if="!inChapter">
+		<p class="text-body-1 mt-3 mb-6 text-justify" v-if="index.intro">{{ index.intro }}</p>
+		<p class="text-overline mt-1"><strong>Chapters</strong></p>
+		<v-divider class="mb-3"></v-divider>
+		<v-btn variant="text" class="ma-1" v-for="chapter in chapters" :key="chapter" :href="'/#/scriptures/l/' + book.join('/') + '.' + chapter" exact><strong>{{ chapter }}</strong></v-btn>
+		<p class="text-body-2 mt-6" v-if="index.external"><a :href="index.external">View <span v-if="index.externalType">{{ index.externalType }}</span></a> from The Church of Jesus Christ of Latter-day Saints Website</p>
+	</v-container>
+	<v-container fluid :style="'margin: auto; padding: 0px; max-width: 720px;'" v-else>
+		<p class="text-overline mt-1"><strong>Chapter {{ getChapter }}</strong></p>
+		<v-divider class="mb-3"></v-divider>
+		<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>
 		<p class="text-body-2 mt-6" v-if="index.external"><a :href="index.external">View <span v-if="index.externalType">{{ index.externalType }}</span></a> from The Church of Jesus Christ of Latter-day Saints Website</p>
 	</v-container>
 	<!--<p class="text-body-2 mt-6"><em>Powered by <a href="https://alquran.cloud">alquran.cloud</a></em></p>-->

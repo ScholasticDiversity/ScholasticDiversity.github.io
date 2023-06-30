@@ -29,7 +29,7 @@
 			<v-btn variant="text" class="ma-1" v-for="p in intSections" :key="p" :href="'/#/scriptures/j/t/' + textName + '.' + p" exact><strong>{{ p }}</strong></v-btn>
 		</div>
 	</v-container>
-	<v-container fluid :style="'margin: auto; padding: 0px; max-width: 800px;'" v-else-if="isText && sections.length > 0"> <!-- Inside a text section, show subsections or text -->
+	<v-container fluid :style="'margin: auto; padding: 0px; max-width: 720px;'" v-else-if="isText && sections.length > 0"> <!-- Inside a text section, show subsections or text -->
 		<div v-if="isChapter || isIntSection || isDaf"> <!-- If last section is a chapter, show text for whole chapter -->
 			<p class="text-overline mt-1"><strong>{{ indexDetails.schema ? indexDetails.schema.sectionNames[sections.length - 1] : "" }} {{ sections[sections.length - 1] }}</strong></p>
 			<v-divider class="mb-3"></v-divider>
