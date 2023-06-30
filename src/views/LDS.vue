@@ -13,25 +13,28 @@
 	<h1 class="text-h5 text-center">{{ index.title }}</h1>
 	<v-divider></v-divider>
 
-	<v-container fluid :style="'margin: 0px; padding: 0px;'" v-if="!hasChapters"> <!-- Not in Text, show index -->
+	<v-container fluid :style="'margin: 0px; padding: 0px;'" v-if="!hasChapters && !inChapter"> <!-- Not in Text, show index -->
 		<v-row dense :style="'margin: 0px; padding: 0px;'">
 			<GeneralIndex :root="index" hideroot="true" :depth="3" isroot="true" :categories="[]"></GeneralIndex>
 		</v-row>
 		<p class="text-body-2 mt-6" v-if="index.external"><a :href="index.external">View <span v-if="index.externalType">{{ index.externalType }}</span></a> from The Church of Jesus Christ of Latter-day Saints Website</p>
 	</v-container>
-	<v-container fluid :style="'margin: 0px; padding: 0px;'" v-else-if="!inChapter">
+	<v-container fluid :style="'margin: 0px; padding: 0px;'" v-if="hasChapters && !inChapter">
 		<p class="text-body-1 mt-3 mb-6 text-justify" v-if="index.intro">{{ index.intro }}</p>
 		<p class="text-overline mt-1"><strong>Chapters</strong></p>
 		<v-divider class="mb-3"></v-divider>
+		<span v-if="index.intro_chapter">
+			<v-btn variant="text" class="ma-1" :href="'/#/scriptures/l/' + book.join('/') + '.Introduction'" exact><strong>Intro</strong></v-btn>
+		</span>
 		<v-btn variant="text" class="ma-1" v-for="chapter in chapters" :key="chapter" :href="'/#/scriptures/l/' + book.join('/') + '.' + chapter" exact><strong>{{ chapter }}</strong></v-btn>
 		<p class="text-body-2 mt-6" v-if="index.external"><a :href="index.external">View <span v-if="index.externalType">{{ index.externalType }}</span></a> from The Church of Jesus Christ of Latter-day Saints Website</p>
 	</v-container>
-	<v-container fluid :style="'margin: auto; padding: 0px; max-width: 720px;'" v-else>
+	<v-container fluid :style="'margin: auto; padding: 0px; max-width: 720px;'" v-if="inChapter">
 		<div v-if="chapters > 1">
-			<p class="text-overline"><strong>Chapter {{ getChapter }}</strong></p>
+			<p class="text-overline mt-1"><strong>{{ getChapterTitle }}</strong></p>
 			<v-divider></v-divider>
 		</div>
-		<p class="text-body-1 text-justify scripturetext" :class="chapters == 1 ? 'mt-4' : ''" v-html="sectionText"></p>
+		<p class="text-body-1 text-justify scripturetext" :class="chapters == 1 ? 'mt-4' : 'mt-3'" v-html="sectionText"></p>
 		<p class="text-body-2 mt-6" v-if="index.external"><a :href="index.external">View <span v-if="index.externalType">{{ index.externalType }}</span></a> from The Church of Jesus Christ of Latter-day Saints Website</p>
 	</v-container>
 	<!--<p class="text-body-2 mt-6"><em>Powered by <a href="https://alquran.cloud">alquran.cloud</a></em></p>-->
@@ -56,7 +59,7 @@
 
 	// If the book has chapters only, and no subsections
 	let hasChapters = computed(() => {
-		return index.value.chapters >= 1;
+		return index.value.chapters >= 1 || index.value.intro_chapter;
 	});
 	let chapters = computed(() => {
 		if (hasChapters.value) {
@@ -65,31 +68,38 @@
 		return 0;
 	});
 	let inChapter = computed(() => {
-		if ((index.value.chapters == 0 || index.value.chapters == 1) && !index.value.contents) return true;
+		if ((index.value.chapters == 0 || index.value.chapters == 1) && !index.value.contents && !index.value.intro_chapter) return true;
 		const parts = props.book[props.book.length - 1].split('.');
 		return parts.length > 1;
 	})
-	let getChapter = computed(() => { // 0 if more subsections, 1 if no chapters, >1 if chapters
+	let getChapter = computed(() => { // -1 for no chapter, 0 if introduction chapter, otherwise chapter number
 		if (inChapter.value) {
-			if ((index.value.chapters == 0 || index.value.chapters == 1) && !index.value.contents) return 1;
+			if ((index.value.chapters == 0 || index.value.chapters == 1) && !index.value.contents && !index.value.intro_chapter) return 1;
 		}
 		if (hasChapters.value) {
 			const parts = props.book[props.book.length - 1].split('.');
+			if (parts[1] == "Introduction") return 0;
 			return parseInt(parts[1], 10)
 		}
-		return index.value.contents ? 0 : 1;
+		return index.value.contents ? -1 : 1;
 	});
+	let getChapterTitle = computed(() => {
+		if (getChapter.value == 0) {
+			return "Introduction";
+		}
+		return "Chapter " + getChapter.value;
+	})
 	let sectionTextInfo = ref([] as any[]);
 	let sectionText = computed(() => {
 		let s = "";
 		let separator = " ";
 		let prefix = "";
 		let suffix = "";
-		if (index.value.paragraphs) {
-			prefix = "<p class='indent'>"
-			suffix = "</p>"
-		}
 		for (let a of sectionTextInfo.value) {
+			if (index.value.paragraphs) {
+				prefix = `<p class='${a.no_indent ? '' : 'indent'} ${a.class}'>`
+				suffix = "</p>"
+			}
 			s += separator + prefix + a.scripture_text + suffix;
 		}
 		return s;

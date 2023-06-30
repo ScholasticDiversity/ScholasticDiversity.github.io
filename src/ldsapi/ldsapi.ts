@@ -14,7 +14,7 @@ export default {
 			contents: [
 				{
 					title: "The Book of Mormon",
-					desc: "An account written by the hand of mormon upon plates taken from the plates of Nephi. TRANSLATED BY JOSEPH SMITH, Jun.",
+					desc: "Another Testament of Jesus Christ. An account written by the hand of mormon upon plates taken from the plates of Nephi. TRANSLATED BY JOSEPH SMITH, Jun.",
 					to: { name: "lds", params: { book: ["The Book of Mormon"] } },
 					external: "https://assets.churchofjesuschrist.org/2d/5e/2d5e0fa7545611ec81e4eeeeac1e6f4d7d08ab17/book_of_mormon_missionary_english.pdf",
 					externalType: "volume's PDF",
@@ -187,6 +187,8 @@ export default {
 				},
 				{
 					title: "Doctrine and Covenants",
+					intro_chapter: true,
+					desc: "Containing Revelations given to Joseph Smith, the Prophet with some additions by his successors in the presidency of the Church.",
 					to: { name: "lds", params: { book: ["Doctrine and Covenants"] } },
 					chapters: 138,
 					paragraphs: true,
@@ -195,6 +197,7 @@ export default {
 				},
 				{
 					title: "The Pearl of Great Price",
+					desc: "A selection from the revelations, translations, and narrations of joseph smith, first prophet, seer, and revelator to the church of jesus christ of latter-day saints.",
 					to: { name: "lds", params: { book: ["The Pearl of Great Price"] } },
 					external: "https://media.ldscdn.org/pdf/lds-scriptures/the-pearl-of-great-price/the-pearl-of-great-price-eng.pdf",
 					externalType: "volume's PDF",
@@ -300,9 +303,10 @@ export default {
 		return data as any;*/
 
 		const parts = book.split('.');
+		console.log(parts);
 		const volume = parts[0];
 		const bk = (volume == "Doctrine and Covenants") ? "Doctrine and Covenants" : parts[1];
-		const chapter = (volume == "Doctrine and Covenants") ? parts[1] : parts[2];
+		const chapter = (volume == "Doctrine and Covenants") ? (parts[1] == "Introduction" ? 0 : parts[1]) : parts[2];
 
 		let file = "";
 		let useCache = false;
