@@ -224,7 +224,7 @@ export default {
 
 		const parts = book.split('.');
 		const volume = parts[0];
-		const bk = (volume == "Doctrine and Covenants") ? "" : parts[1];
+		const bk = (volume == "Doctrine and Covenants") ? "Doctrine and Covenants" : parts[1];
 		const chapter = (volume == "Doctrine and Covenants") ? parts[1] : parts[2];
 
 		let file = "";
@@ -273,7 +273,7 @@ export default {
 
 		// Filter the array for the specific book from volume.
 		data = data.filter((value: any, index: number, a: any[]) => {
-			if ((bk != "Doctrine and Covenants" && value.book_title == bk) && value.chapter_number == chapter) {
+			if (value.book_title == bk && value.chapter_number == chapter) {
 				return true;
 			}
 			return false;
