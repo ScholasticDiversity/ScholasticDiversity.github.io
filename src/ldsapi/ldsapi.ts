@@ -4,9 +4,9 @@ import pgpJsonURL from "@/assets/pgp-scriptures.json?url"; // Pearl of Great Pri
 
 export default {
 	textCache: {
-		bom: [],
-		dc: [],
-		pgp: [],
+		bom: [] as any[],
+		dc: [] as any[],
+		pgp: [] as any[],
 	},
 	getIndex() {
 		return {
