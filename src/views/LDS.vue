@@ -25,7 +25,7 @@
 			<v-divider class="mb-3"></v-divider>
 			<v-btn variant="text" class="ma-1" v-for="chapter in chapters" :key="chapter" :href="'/#/scriptures/l/' + book.join('/') + '.' + chapter" exact><strong>{{ chapter }}</strong></v-btn>
 		</div>
-		<div v-else>
+		<div v-else style="max-width: 800px; margin: auto;">
 			<p class="text-overline mt-1"><strong>Chapter {{ getChapter }}</strong></p>
 			<v-divider class="mb-3"></v-divider>
 			<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>

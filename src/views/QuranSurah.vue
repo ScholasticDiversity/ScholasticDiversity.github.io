@@ -13,7 +13,7 @@
 	<h1 class="text-h5 text-center">{{ version.englishName }}: {{ surahMeta.englishName }}</h1>
 	<v-divider></v-divider>
 
-	<v-container fluid :style="'margin: 0px; padding: 0px;'"> <!-- Not in Text, show index -->
+	<v-container fluid :style="'margin: 0px; padding: 0px; max-width: 800px;'"> <!-- Not in Text, show index -->
 		<p class="text-overline mt-1"><strong>Surah {{ surahMeta.number }}: {{ surahMeta.englishName }}</strong></p>
 		<v-divider class="mb-3"></v-divider>
 		<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>
