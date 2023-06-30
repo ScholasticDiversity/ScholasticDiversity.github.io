@@ -87,6 +87,12 @@ const routes: Array<any> = [
         component: () => import("@/views/QuranSurah.vue"),
         props: true,
       },
+      {
+        path: 'scriptures/l/:book+',
+        name: "lds",
+        component: () => import("@/views/LDS.vue"),
+        props: true,
+      },
     ],
   },
 ]

@@ -54,6 +54,7 @@
 	});
 
 	watch(() => route.params.id, async (newId) => {
+		if (!newId) return;
 		// Get metadata of number of surahs and their names
 		surahs.value = metadata.value.data.surahs.count;
 		index.value.contents[0].contents = [];

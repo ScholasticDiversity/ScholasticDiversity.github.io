@@ -58,6 +58,7 @@
 
 	// Watch if surah number changes, and if so, fetch the new surah data
 	watch(() => route.params.surah, async (newSurah) => {
+		if (!newSurah) return;
 		surahInfo.value = {};
 		surahMeta.value = await Quran.getSurahInfo(newSurah as string, metadata.value);
 		surahInfo.value = await Quran.getSurah(newSurah as string, route.params.id as string);

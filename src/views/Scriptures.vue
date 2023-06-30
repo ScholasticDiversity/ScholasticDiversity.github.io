@@ -29,6 +29,15 @@
 			<GeneralIndex :root="islamicScriptures" hideroot="true" :depth="2" isroot="true" :categories="[]"></GeneralIndex>
 		</v-row>
 	</v-container>
+
+	<p class="text-overline mt-1"><strong>Church of Jesus Christ of Latter-Day Saints</strong></p>
+	<!--<p class="text-body-2 mb-2">Powered by <a href="https://alquran.cloud">alquran.cloud</a></p>-->
+	<v-divider class="mb-3"></v-divider>
+	<v-container fluid :style="'margin: 0px; padding: 0px;'"> <!-- Not in Text, show index -->
+		<v-row dense :style="'margin: 0px; padding: 0px;'">
+			<GeneralIndex :root="ldsScriptures" hideroot="true" :depth="2" isroot="true" :categories="[]"></GeneralIndex>
+		</v-row>
+	</v-container>
 </template>
 
 <script lang="ts" setup>
@@ -45,6 +54,8 @@
 	import SefariaIndex from '@/components/SefariaIndex.vue';
 	import GeneralIndex from '@/components/GeneralIndex.vue';
 	import { ref, readonly, DeepReadonly, watch, computed, onBeforeMount } from 'vue';
+
+	import LDSApi from "@/ldsapi/ldsapi";
 
 	let jewishScriptures = ref({ contents: Sefaria.toc });
 	let jewishScriptures_custom = ref({
@@ -63,6 +74,7 @@
 		title: "Qur'an",
 		to: { name: "quran" },
 	})
+	let ldsScriptures = ref(LDSApi.getIndex());
 </script>
 
 <style lang="scss">
