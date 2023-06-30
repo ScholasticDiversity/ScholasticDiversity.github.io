@@ -27,9 +27,11 @@
 		<p class="text-body-2 mt-6" v-if="index.external"><a :href="index.external">View <span v-if="index.externalType">{{ index.externalType }}</span></a> from The Church of Jesus Christ of Latter-day Saints Website</p>
 	</v-container>
 	<v-container fluid :style="'margin: auto; padding: 0px; max-width: 720px;'" v-else>
-		<p class="text-overline mt-1"><strong>Chapter {{ getChapter }}</strong></p>
-		<v-divider class="mb-3"></v-divider>
-		<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>
+		<div v-if="chapters > 1">
+			<p class="text-overline"><strong>Chapter {{ getChapter }}</strong></p>
+			<v-divider></v-divider>
+		</div>
+		<p class="text-body-1 text-justify scripturetext" :class="chapters == 1 ? 'mt-4' : ''" v-html="sectionText"></p>
 		<p class="text-body-2 mt-6" v-if="index.external"><a :href="index.external">View <span v-if="index.externalType">{{ index.externalType }}</span></a> from The Church of Jesus Christ of Latter-day Saints Website</p>
 	</v-container>
 	<!--<p class="text-body-2 mt-6"><em>Powered by <a href="https://alquran.cloud">alquran.cloud</a></em></p>-->
@@ -54,7 +56,7 @@
 
 	// If the book has chapters only, and no subsections
 	let hasChapters = computed(() => {
-		return index.value.chapters;
+		return index.value.chapters >= 1;
 	});
 	let chapters = computed(() => {
 		if (hasChapters.value) {
@@ -63,10 +65,14 @@
 		return 0;
 	});
 	let inChapter = computed(() => {
+		if ((index.value.chapters == 0 || index.value.chapters == 1) && !index.value.contents) return true;
 		const parts = props.book[props.book.length - 1].split('.');
 		return parts.length > 1;
 	})
 	let getChapter = computed(() => { // 0 if more subsections, 1 if no chapters, >1 if chapters
+		if (inChapter.value) {
+			if ((index.value.chapters == 0 || index.value.chapters == 1) && !index.value.contents) return 1;
+		}
 		if (hasChapters.value) {
 			const parts = props.book[props.book.length - 1].split('.');
 			return parseInt(parts[1], 10)
@@ -76,8 +82,15 @@
 	let sectionTextInfo = ref([] as any[]);
 	let sectionText = computed(() => {
 		let s = "";
+		let separator = " ";
+		let prefix = "";
+		let suffix = "";
+		if (index.value.paragraphs) {
+			prefix = "<p class='indent'>"
+			suffix = "</p>"
+		}
 		for (let a of sectionTextInfo.value) {
-			s += " " + a.scripture_text;
+			s += separator + prefix + a.scripture_text + suffix;
 		}
 		return s;
 	})
@@ -87,15 +100,27 @@
 		const parts = newBook[newBook.length - 1].split('.');
 		index.value = LDSApi.getBookFromIndex(parts[0]);
 
-		const bookText = await LDSApi.getBookText(newBook.join('.'));
-		sectionTextInfo.value = bookText;
+		if ((index.value.chapters == 0 || index.value.chapters == 1) && !index.value.contents) {
+			const bookText = await LDSApi.getBookText(newBook.concat(["1"]).join('.'));
+			sectionTextInfo.value = bookText;
+		} else {
+			const bookText = await LDSApi.getBookText(newBook.join('.'));
+			sectionTextInfo.value = bookText;
+		}
 	});
 
 	onBeforeMount(async () => {
 		const parts = props.book[props.book.length - 1].split('.');
 		index.value = LDSApi.getBookFromIndex(parts[0]);
-		const bookText = await LDSApi.getBookText(props.book.join('.'));
-		sectionTextInfo.value = bookText;
+
+		let bookText = [] as Array<any>;
+		if ((index.value.chapters == 0 || index.value.chapters == 1) && !index.value.contents) {
+			bookText = await LDSApi.getBookText(props.book.concat(["1"]).join('.'));
+			sectionTextInfo.value = bookText;
+		} else {
+			bookText = await LDSApi.getBookText(props.book.join('.'));
+			sectionTextInfo.value = bookText;
+		}
 		console.log("BookText: ", bookText);
 	});
 </script>
