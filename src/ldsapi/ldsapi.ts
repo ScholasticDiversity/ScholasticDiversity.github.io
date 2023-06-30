@@ -149,9 +149,10 @@ export default {
 		}
 	},
 	async getBookText(book: string) {
-		const res = await fetch(`https://api.nephi.org/scriptures/?q=${encodeURIComponent(book).replaceAll('%20', '+')}`, { method: "GET", mode: "no-cors" });
+		const res = await fetch(`https://api.nephi.org/scriptures/?q=${encodeURIComponent(book)}`, { method: "GET" });
 		if (!res.ok) {
 			const message = `An error has occured: ${res.status} - ${res.statusText}`;
+			console.log(res);
             throw new Error(message);
 		}
 
