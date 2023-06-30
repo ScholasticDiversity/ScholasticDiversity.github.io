@@ -28,10 +28,11 @@
 		<div v-else>
 			<p class="text-overline mt-1"><strong>Chapter {{ getChapter }}</strong></p>
 			<v-divider class="mb-3"></v-divider>
-			<!--<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>-->
+			<p class="text-body-1 text-justify scripturetext" v-html="sectionText"></p>
 		</div>
+		<p class="text-body-2 mt-6" v-if="index.external"><a :href="index.external">View <span v-if="index.externalType">{{ index.externalType }}</span></a> from The Church of Jesus Christ of Latter-day Saints Website</p>
 	</v-container>
-	<p class="text-body-2 mt-6"><em>Powered by <a href="https://alquran.cloud">alquran.cloud</a></em></p>
+	<!--<p class="text-body-2 mt-6"><em>Powered by <a href="https://alquran.cloud">alquran.cloud</a></em></p>-->
 </template>
 
 <script lang="ts" setup>
@@ -72,28 +73,30 @@
 		}
 		return index.value.contents ? 0 : 1;
 	});
-	let sectionText = ref({} as any);
+	let sectionTextInfo = ref([] as any[]);
+	let sectionText = computed(() => {
+		let s = "";
+		for (let a of sectionTextInfo.value) {
+			s += " " + a.scripture_text;
+		}
+		return s;
+	})
 
-	watch(() => route.params.book as Array<string>, (newBook: Array<string>) => {
+	watch(() => route.params.book as Array<string>, async (newBook: Array<string>) => {
 		if (!newBook) return;
 		const parts = newBook[newBook.length - 1].split('.');
 		index.value = LDSApi.getBookFromIndex(parts[0]);
+
+		const bookText = await LDSApi.getBookText(newBook.join('.'));
+		sectionTextInfo.value = bookText;
 	});
 
 	onBeforeMount(async () => {
 		const parts = props.book[props.book.length - 1].split('.');
 		index.value = LDSApi.getBookFromIndex(parts[0]);
-		const bookText = await LDSApi.getBookText(parts.join(' '));
+		const bookText = await LDSApi.getBookText(props.book.join('.'));
+		sectionTextInfo.value = bookText;
 		console.log("BookText: ", bookText);
-		/*let data = await Quran.getEnglishVersions();
-		for (let v of data.data) {
-			index.value.contents[0].contents.push({
-				title: v.englishName,
-				identifier: v.identifier,
-				to: { name: "qurantranslation", params: { id: v.identifier } },
-			})
-		}
-		console.log("Quran data: ", data);*/
 	});
 </script>
 
