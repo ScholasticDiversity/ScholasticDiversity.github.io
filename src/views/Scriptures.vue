@@ -113,6 +113,16 @@
 				href: "http://www.avesta.org/fragment/index.html",
 			},
 			{
+				title: "Hamā Anjuman Prayers for Naurooz",
+				desc: "Nawruz Prayer Book, published by FEZANA",
+				href: "http://www.avesta.org/afrin/20100321_Naurooz_Prayer_Book_all_52_Pages_Landscape_Final.pdf",
+			},
+			{
+				title: "The Book of Arda Viraf",
+				desc: "Visit to Heaven and Hell",
+				href: "http://www.avesta.org/mp/viraf.html",
+			},
+			{
 				title: "The Bundahishn",
 				desc: "Knowledge from the Zand",
 				href: "http://www.avesta.org/mp/bundahis.pdf",
@@ -125,6 +135,10 @@
 				title: "Chidag Andarz i Poryotkeshan",
 				desc: "Chatechism",
 				href: "http://www.avesta.org/mp/catechis.html"
+			},
+			{
+				title: "Pazend Texts",
+				href: "http://www.avesta.org/pazand/pazand_avesta_org_transcription_font.pdf",
 			}
 		]
 	})
