@@ -38,6 +38,15 @@
 			<GeneralIndex :root="ldsScriptures" hideroot="true" :depth="2" isroot="true" :categories="[]"></GeneralIndex>
 		</v-row>
 	</v-container>
+
+	<p class="text-overline mt-1"><strong>Zoroastrian</strong></p>
+	<p class="text-body-2 mb-2">Links to <a href="https://avesta.org">avesta.org</a></p>
+	<v-divider class="mb-3"></v-divider>
+	<v-container fluid :style="'margin: 0px; padding: 0px;'"> <!-- Not in Text, show index -->
+		<v-row dense :style="'margin: 0px; padding: 0px;'">
+			<GeneralIndex :root="zoroastrianScriptures" hideroot="true" :depth="2" isroot="true" :categories="[]"></GeneralIndex>
+		</v-row>
+	</v-container>
 </template>
 
 <script lang="ts" setup>
@@ -75,6 +84,50 @@
 		to: { name: "quran" },
 	})
 	let ldsScriptures = ref(LDSApi.getIndex());
+	let zoroastrianScriptures = ref({
+		title: "Zoroastrian",
+		desc: "Links to avesta.org",
+		contents: [
+			{
+				title: "Yasna",
+				desc: "Sacred Liturgy and Gathas/Hymns of Zarathushtra",
+				href: "http://www.avesta.org/yasna/index.html",
+			},
+			{
+				title: "Khorda Avesta",
+				desc: "Zoroastrian daily prayers",
+				href: "http://www.avesta.org/ka/ka_avesta_dot_org.pdf",
+			},
+			{
+				title: "Visperad",
+				desc: "Extensions to the Liturgy",
+				href: "http://www.avesta.org/visperad/vr_tr.pdf",
+			},
+			{
+				title: "Vendidad",
+				desc: "Myths, code of purification, religious observances",
+				href: "http://www.avesta.org/vendidad/vd_eng.pdf"
+			},
+			{
+				title: "Fragments",
+				href: "http://www.avesta.org/fragment/index.html",
+			},
+			{
+				title: "The Bundahishn",
+				desc: "Knowledge from the Zand",
+				href: "http://www.avesta.org/mp/bundahis.pdf",
+			},
+			{
+				title: "Greater Bundahishn",
+				href: "http://www.avesta.org/mp/grb.pdf",
+			},
+			{
+				title: "Chidag Andarz i Poryotkeshan",
+				desc: "Chatechism",
+				href: "http://www.avesta.org/mp/catechis.html"
+			}
+		]
+	})
 </script>
 
 <style lang="scss">
