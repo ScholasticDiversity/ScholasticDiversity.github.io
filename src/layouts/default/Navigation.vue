@@ -117,7 +117,7 @@
 				{ title: 'Yerushalmi Talmud', to: { name: "sefaria", params: { categories: ["Talmud", "Yerushalmi"] } } },
 				{ title: "Other Jewish Scriptures", to: { name: "jewishscriptures", params: { categories: [] } } },
 				{ title: 'Qur\'an', to: { name: "quran" } },
-				{ title: 'The Book of Mormon', to: { name: "lds", params: { book: ["Book of Mormon"] } } },
+				{ title: 'The Book of Mormon', to: { name: "lds", params: { book: ["The Book of Mormon"] } } },
 				{ title: 'Gnostic Gospels' },
 			]
 		},
