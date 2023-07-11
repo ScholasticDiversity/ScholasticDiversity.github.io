@@ -5,7 +5,7 @@
 	</v-container>-->
 	<v-img src="https://img.itch.zone/aW1nLzEwNDc5MDA5LnBuZw==/original/R1Jcbd.png"></v-img>
 	<br />
-	<v-card density="compact" href="https://krixano.itch.io/tempus-calendar" hover>
+	<v-card density="compact" href="https://clseibold.itch.io/tempus-calendar" hover>
 		<v-card-text class="text-center"><strong>$7 on Itch.io</strong></v-card-text>
 	</v-card>
 	<v-divider class="mb-6"></v-divider>
