@@ -1,4 +1,6 @@
-# essentials
+# Scholastic Diversity
+
+Visit the Scholastic Diversity website here: [https://scholasticdiversity.github.io](https://scholasticdiversity.github.io)
 
 ## Project setup
 
