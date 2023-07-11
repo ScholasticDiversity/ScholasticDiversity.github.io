@@ -47,6 +47,15 @@
 			<GeneralIndex :root="zoroastrianScriptures" hideroot="true" :depth="2" isroot="true" :categories="[]"></GeneralIndex>
 		</v-row>
 	</v-container>
+
+	<p class="text-overline mt-1"><strong>Christian</strong></p>
+	<p class="text-body-2 mb-2">Powered by <a href="https://api.bible">api.bible</a></p>
+	<v-divider class="mb-3"></v-divider>
+	<v-container fluid :style="'margin: 0px; padding: 0px;'"> <!-- Not in Text, show index -->
+		<v-row dense :style="'margin: 0px; padding: 0px;'">
+			<GeneralIndex :root="christianScriptures" hideroot="true" :depth="2" isroot="true" :categories="[]"></GeneralIndex>
+		</v-row>
+	</v-container>
 </template>
 
 <script lang="ts" setup>
@@ -141,7 +150,23 @@
 				href: "http://www.avesta.org/pazand/pazand_avesta_org_transcription_font.pdf",
 			}
 		]
-	})
+	});
+	let christianScriptures = ref({
+		title: "Christian",
+		desc: "Powered by api.bible",
+		contents: [
+			{
+				title: "Old Testament",
+			},
+			{
+				title: "New Testament",
+			},
+			{
+				title: "Deuterocanon",
+				desc: "aka. Old Testament Apocrypha",
+			}
+		]
+	});
 </script>
 
 <style lang="scss">
