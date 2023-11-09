@@ -50,7 +50,7 @@
                 "God no longer liked humans",
                 "The earth became corrupted by the Nephilim, lawlessness spread, and humans became wicked",
             ], correctChoice: 2, explanation: "The earth became corrupted by all flesh, divine beings mated with human women to create the Nephilim, lawlessness, and human wickedness." },
-        { q: "How does the flood parallel the story of Sodom and Gomorrah?", choices: [""], correctChoice: 0, explanation: "" },
+        //{ q: "How does the flood parallel the story of Sodom and Gomorrah?", choices: [""], correctChoice: 0, explanation: "" },
         { q: "What is God's interaction with Abraham directly before the story of Sodom and Gomorrah?", choices: [
                 "God tells Abraham of his plans to destroy Sodom and Gomorrah because of the city's sin and Homosexuality. Abraham does not object.",
                 "God visits Abraham and Sarah but does not speak of his plans to destroy Sodom and Gomorrah.",
