@@ -87,7 +87,7 @@
 				{ title: 'Confucianism' },
 				{ title: 'Daoism' },
 				{ title: 'Shinto' },
-				{ title: 'Ancient Near Eastern Paganism' },
+				{ title: 'Ancient Near Eastern Paganism', to: { name: "ancientneareast" } },
 				{ title: 'Zoroastrianism' },
 				{ title: 'Judaism', to: { name: "judaism" } },
 				{ title: 'Samaritans' },
@@ -119,6 +119,11 @@
 				{ title: 'Qur\'an', to: { name: "quran" } },
 				{ title: 'The Book of Mormon', to: { name: "lds", params: { book: ["The Book of Mormon"] } } },
 				{ title: 'Gnostic Gospels' },
+			]
+		},
+		{ title: "Trivia",
+			items: [
+				{ title: "Bible Test", to: { name: "bible_test" } },
 			]
 		},
 		{ title: 'Philosophy', 

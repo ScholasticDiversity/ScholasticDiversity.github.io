@@ -45,6 +45,11 @@ const routes: Array<any> = [
         component: () => import('@/views/Christianity.vue'),
       },
       {
+        path: 'ancientneareast',
+        name: "ancientneareast",
+        component: () => import('@/views/AncientNearEast.vue'),
+      },
+      {
         path: 'religiousliteracy',
         name: "religiousliteracy",
         component: () => import('@/views/ReligiousLiteracy.vue'),
@@ -92,6 +97,16 @@ const routes: Array<any> = [
         name: "lds",
         component: () => import("@/views/LDS.vue"),
         props: true,
+      },
+      {
+        path: "trivia",
+        name: "trivia",
+        component: () => import("@/views/LDS.vue")
+      },
+      {
+        path: "trivia/bible_test",
+        name: "bible_test",
+        component: () => import("@/views/BibleTest.vue")
       },
     ],
   },

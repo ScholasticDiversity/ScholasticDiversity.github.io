@@ -12,11 +12,13 @@
 		<v-divider></v-divider>
 	</template>
 	<p>Note that these links redirect to articles I have written on Post.News.</p>
+	<div ref="epubContent"></div>
 </template>
   
 <script lang="ts" setup>
 	import router from '@/router';
-	import { ref, readonly, DeepReadonly } from 'vue';
+	import { ref, readonly, DeepReadonly, onBeforeMount } from 'vue';
+	import epub from 'epubjs';
 	const posts = ref([
 		{ title: "Kabbalah and Religious Tourism", link: "https://post.news/@/krixano/2SThEdvX4vn7aiiUSTHiksvhSpC", date: "2023-07-12", category: "Religion", description: `I recently seen some beautiful Kabbalah artwork at my city's synagogue, and it reminded me of this. When I first heard of Madonna's whole thing with Kabbalah, I was more than disappointed. A "watered-down" look at religion is when people learn the very surface level of religion without dedicating their time into knowing its full context, distinguishing elements, and diversity. When people instantly think of Madonna and celebrity cults when they hear Kabbalah, that is a stereotype that has diminished Kabbalah significantly.` },
 		{ title: "Relation and Radical Amazement vs. Love", link: "https://post.news/@/krixano/2RaVssMgYqDnNcGGCUf2GF7N17a", date: "2023-06-23", category: "Philosophy, Religion", description: `The mystical often speaks through human emotion. Albert Einstein in my other post below is really talking about a relational mystical experience where you feel connected to everything else, removing this "optical delusion" of feeling like you are "separated from the rest".` },
@@ -30,6 +32,32 @@
 		{ title: "Religious Exclusion in the LGBTQ+ Community", link: "https://post.news/@/krixano/2JfxeVBiVl0oUJN2nDyql9kaS2O", date: "2022-12-31", category: "Religion, LGBTQ+", description: `LGBTQ+ individuals already have to go through so much exclusion and feelings of needing to remain closeted in various places. So, what's very disappointing is this exclusion from some members of the LGBTQ+ community not understanding those of us who have a particular faith or are holding onto a Church we grew up in.` },
 		{ title: "", link: "", date: "", category: "", description: `` },
 	]);
+
+	const epubContent: any = ref(null);
+
+	onBeforeMount(async () => {
+		var $viewer = document.getElementById("epub");
+		var book = epub("https://standardebooks.org/ebooks/herman-melville/moby-dick/downloads/herman-melville_moby-dick.epub");
+		book.loaded.navigation.then((toc) => {
+			book.opened.then(() => {
+				var rendition = book.renderTo(epubContent.value, { allowScriptedContent: true });
+				rendition.display().then((t: any) => {
+					console.log(t);
+					t.next()
+				})
+			})
+		})
+		/*book.loaded.navigation.then(function(toc) {
+			//var rendition = book.renderTo("epub", {flow: "paginated", width: "100%", height: 400});
+			var currentSectionIndex = 0;
+			book.opened.then(function(){
+				display(currentSectionIndex);
+			});
+
+
+			//var displayed = rendition.display();
+		});*/
+	});
   </script>
   
 <style lang="scss">
